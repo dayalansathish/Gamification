@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scratch Card</title>
+  <link rel="stylesheet" href="scratch.css">
+  <script src="scratch.js" defer></script>
+</head>
+
+<body>
+
+  <div class="backdiv">
+    <button class="backBtn">Back</button>
+  </div>
+  <div id="promo" class="scratchpad">
+    <button id="scratchBtn">Click Here</button>
+  </div>
+
+  <!-- Modal form -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <form id="claimForm">
+        <h3>Fill the form & get rewards</h3>
+        <input type="text" placeholder="Name" name="name" required /><br /><br />
+        <input type="email" placeholder="Email" name="email" required /><br /><br />
+        <button id="claimBtn" type="submit">Claim Rewards</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Load jQuery before using $ -->
+  <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <!-- Load wScratchPad plugin -->
+  <script src="assets/wScratchPad.min.js"></script>
+</body>
+
+</html>

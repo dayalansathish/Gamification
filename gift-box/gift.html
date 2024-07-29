@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mystery Box Game</title>
+<link rel="stylesheet" href="gift.css">
+<script src="gift.js" defer></script>
+
+</head>
+<body>
+
+<div class="backdiv">
+  <button class="backBtn">Back</button>
+  </div>
+
+  <div class="head">
+    <h3>click gift box get rewards</h3>
+  </div>
+
+<div class="container">
+  <div class="mystery-box" id="box1">
+    <img src="gift1.gif" alt="gift box" width="200px" height="200px">
+  </div>
+  <div class="mystery-box" id="box2">
+    <img src="gift2.gif" alt="gift box" width="200px" height="200px">
+  </div>
+  <div class="mystery-box" id="box3">
+    <img src="gift3.gif" alt="gift box" width="200px" height="200px">
+  </div>
+</div>
+
+<!-- Form Modal -->
+<div id="form-modal" class="modal">
+    <div id="formModalContent" class="modal-content">
+        <span class="close">&times;</span>
+      <h2>Enter Your Details</h2>
+      <form id="reward-form" onsubmit="return false;">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+        <label for="mobile">Mobile Number:</label><br />
+        <input type="text" id="mobile" name="mobile" required /><br /><br />
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+        <button type="button" id="get-rewards-btn">Get Rewards</button>
+      </form>
+    </div>
+  </div>
+
+<!-- Rewards Modal -->
+<div class="modal" id="rewards-modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modal-title"></h2>
+    <img id="reward-image" src="" alt="Reward Image" style="display: none;" width="400px" height="200px">
+  </div>
+</div>
+
+  <!-- Add audio elements for winning and losing -->
+  <audio id="winAudio">
+    <source src="./audio/win.mp3" type="">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="loseAudio">
+    <source src="./audio/lose.mp3" type="">
+    Your browser does not support the audio element.
+  </audio>
+
+<script>
+</script>
+
+</body>
+</html>

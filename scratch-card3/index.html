@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scratch card</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="backdiv">
+        <button class="backBtn">Back</button>
+    </div>
+    <h1 class="title">Scratch and win</h1>
+
+    <h4 class="head">Click the scratch card</h4>
+
+    <div class="container">
+        <div id="scratchCard"></div>
+        <button class="btn" value="Reset" onclick="$('#scratchCard').wScratchPad('reset');">Reset</button>
+    </div>
+
+
+  <!-- Form Modal -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Enter Your Information</h2>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="tel" id="mobile" placeholder="Your Mobile Number" required>
+        <button class="submit-btn">Pop Balloon</button>
+    </div>
+</div>
+
+<!-- Rewards Modal -->
+<div id="rewardsModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="congratulations-title">congratulations</h2>
+        <p class="rewards-content"></p>
+        <button class="rewards-btn">Claim Reward</button>
+    </div>
+</div>
+
+    <script src="js/jquery.min.js"></script>    
+    <script src="js/wScratchPad.min.js"></script>
+    <script>
+     var formSubmit = false;
+
+function openFormModal() {
+    $("#formModal").css({
+        "display": "block",
+    });
+}
+
+// Function to close the form modal
+function closeFormModal() {
+    $("#formModal").css("display", "none");
+}
+
+function openRewardsModal() {
+    $("#rewardsModal").css({
+        "display": "block",
+    });
+}
+
+// Function to close the form modal
+function closeRewardsModal() {
+    $("#rewardsModal").css("display", "none");
+}
+
+$('.rewards-btn').click(function(){
+    closeRewardsModal()
+    window.location.reload();
+})
+
+$('#scratchCard').click(function () {
+    if (!formSubmit) {
+        openFormModal();
+    }
+})
+
+
+
+// Function to handle form submission
+$("#formModal .submit-btn").click(function () {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var mobile = $("#mobile").val();
+
+    // Validate form inputs
+    if (name && email && mobile) {
+        formSubmit = true; // Update the outer scope variable
+        closeFormModal();
+        // Reset form fields to initial state
+        $("#name").val("");
+        $("#email").val("");
+        $("#mobile").val("");
+        $('.scratch-layer').hide()
+    } else {
+        alert("Please fill in all fields.");
+    }
+});
+
+$('#scratchCard').wScratchPad({
+    size: 70,
+    bg: 'images/winning-card.jpg',
+    fg: 'images/google-scratch-card.jpg',
+    realtime: true,
+    scratchDown: null,
+    scratchMove: function (e, percent) {
+        // console.log("scratchMove:" + percent); 
+        if (percent > 80) {
+            this.clear();
+            openRewardsModal()
+        }
+    },
+    scratchUp: null,
+    // function(e, percent){ console.log("scratchUp:" +  percent); },
+    cursor: 'pointer' // Set cursor.
+});
+
+document
+.querySelector(".backBtn")
+.addEventListener("click", function () {
+  window.history.back(); // Equivalent to history.go(-1) or history.back()
+});
+
+
+    </script>
+</body>
+</html>

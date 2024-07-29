@@ -1,0 +1,160 @@
+html,body{
+	font-family: 'Lato', 'Helvetica Neue', 'Helvetica', Helvetica, Arial,sans-serif;
+}
+.blue-dark-bg {
+    background-color: #212e35;
+	color: #fff;
+}
+
+
+.home-intro {
+    text-align: center;
+    /* padding-top: 100px; */
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.home-intro h1 {
+    margin-bottom: 25px;
+}
+@media only screen and (max-width: 600px) {
+    .home-intro h1 {
+		font-size: 30px;
+	}
+}
+.intro-btn-group {
+    text-align: center;
+	list-style: none;
+	padding: 0;
+}
+
+.intro-btn-group li {
+    max-width: 250px;
+    margin: 15px auto
+}
+
+@media only screen and (min-width: 600px) {
+    .intro-btn-group li {
+        display:inline-block;
+        margin: 0 6px
+    }
+}
+
+@supports(grid-area: auto) {
+    .intro-btn-group {
+        display:-ms-grid;
+        display: grid;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        grid-gap: 10px;
+        -ms-grid-columns: (250px)[auto-fit];
+        grid-template-columns: repeat(auto-fit,250px);
+        position: absolute;
+        top: 56%;
+        left: 43%;
+        z-index: 1;
+    }
+
+    .intro-btn-group li {
+        margin: 0
+    }
+
+    .intro-btn-group .btn {
+        padding-right: 0;
+        padding-left: 0
+    }
+}
+
+.height-vh{
+	min-height: 100vh;
+}
+
+.home-demo {
+    background-color: #009688;
+    color: #ffffff;
+}
+
+.home-demo .content {
+    margin: auto;
+    padding: 20px 20px 35px;
+    max-width: 650px;
+}
+
+.home-demo h2 {
+    font-size: 36px;
+    margin: 20px auto 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.home-demo p {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.home-demo hr {
+    background: #ffffff;
+    border: 0;
+    height: 1px;
+    margin: 40px 0;
+}
+
+.home-demo.home-odd {
+    background-color: #fff;
+    color: #616161;
+    min-height: 100vh;
+}
+.home-demo.home-odd h2 {
+    color: #616161;
+}
+.home-demo.home-odd hr {
+    background: #B0BEC5;
+}
+
+.backdiv {
+    display: flex;
+    justify-content: end;
+    margin: 20px;
+  }
+
+  .backBtn {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: medium;
+  }
+  button {
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

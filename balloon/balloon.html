@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balloon Game</title>
+  <link rel="stylesheet" href="ballon.css">
+  <script src="ballon.js" defer></script>
+
+</head>
+<body>
+
+  <div class="backdiv">
+    <button class="backBtn">Back</button>
+</div>
+  
+  <!-- Start Button -->
+  <div class="start-btn">
+    <button class="start-button"  onclick="startGame()">Start Game</button>
+  </div>
+
+  
+
+  <!-- Balloon Container -->
+  <div id="balloon-container">
+  </div>
+
+
+  <!-- Modal for Game Result -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p id="modal-name"></p>
+      <h2 id="modal-title"></h2>
+      <p id="modal-content"></p>
+    </div>
+  </div>
+
+   <!-- Form Modal -->
+  <div id="formModal" class="modal">
+    <div id="formModalContent" class="form-modal-content">
+      <h2 class="title">Enter Your Details</h2>
+      <form id="reward-form" onsubmit="return false;">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+        <label for="mobile">Mobile Number:</label><br />
+        <input type="tel" id="mobile" name="mobile" required /><br /><br />
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+        <button type="button" class="rewards-btn" onclick="getRewards()">Get Rewards</button>
+      </form>
+    </div>
+  </div>
+
+   <!-- Add audio elements for winning and losing -->
+   <audio id="winAudio">
+    <source src="./audio/win.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="loseAudio">
+    <source src="./audio/lose.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+</body>
+</html>
+
+<!-- change the ballon pop method all balloons have rewards -->

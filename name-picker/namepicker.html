@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Name Picker</title>
+    <link rel="stylesheet" href="picker.css">
+    <script src="picker.js" defer></script>
+
+  </head>
+  <body>
+
+    <div class="backdiv">
+      <button class="backBtn">Back</button>
+  </div>
+  
+    <h1>Random Name Picker</h1>
+    <div id="name-display" class="name-display"></div>
+    <button class="draw" onclick="openFormModal()">Draw</button>
+    <h3>Click the draw button</h3>
+
+    <!-- Form Modal -->
+    <div id="formModal" class="modal">
+      <div class="modal-content">
+        <!-- <span class="close">&times;</span> -->
+        <h2>Enter Your Information</h2>
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <input
+          type="tel"
+          id="mobile"
+          placeholder="Your Mobile Number"
+          required
+        />
+        <button class="submit-btn" onclick="submitForm()">submit</button>
+      </div>
+    </div>
+
+    <!-- Rewards Modal -->
+    <div id="rewardsModal" class="modal">
+      <div class="modal-content">
+        <!-- <span class="close">&times;</span> -->
+        <h2>Congratulations!</h2>
+        <p>You've won a special reward!</p>
+        <!-- You can customize the reward message here -->
+      </div>
+    </div>
+
+  </body>
+</html>

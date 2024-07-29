@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" href="assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="assets/css/sweetalert2.min.css" />
+  <link rel="stylesheet" href="dist/superwheel.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/jquery-3.3.1.js"></script>
+  <script src="dist/superwheel.js"></script>
+  <script src="assets/js/sweetalert2.min.js" data-manual></script>
+
+  <title>Spin to Win</title>
+</head>
+
+<body>
+  <div class="home-intro blue-dark-bg height-vh" id="demo_spinner">
+    <div class="backdiv">
+      <button class="backBtn">Back</button>
+    </div>
+    <div class="container-fluid">
+      <div class="container-xl position-relative">
+        <h1>SuperWheel</h1>
+        <div class="wheel mb-5"></div>
+        <ul class="intro-btn-group mb-5">
+          <li>
+            <button class="btn btn-dark p-2 spin-to-win btn-sm" type="button">
+              Spin to win
+            </button>
+          </li>
+        </ul>
+        <script>
+          jQuery(document).ready(function ($) {
+            $(".wheel").superWheel({
+              slices: [
+                {
+                  text: "40% OFF",
+                  message: "You win 20% off",
+                  background: "#364C62",
+                  value: 1,
+                },
+                {
+                  text: "No luck",
+                  message: "You have No luck today",
+                  background: "#9575CD",
+                  value: 0,
+                },
+                {
+                  text: "30% OFF",
+                  message: "You win 30% off",
+                  background: "#E67E22",
+                  value: 1,
+                },
+                {
+                  value: "d",
+                  text: "Lose",
+                  message: "You Lose :(",
+                  background: "#E74C3C",
+                  win: 0,
+                },
+                {
+                  text: "40% OFF",
+                  message: "You win 40% off",
+                  background: "#2196F3",
+                  color: "#fff",
+                  value: 1,
+                },
+                {
+                  text: "40% OFF",
+                  message: "You win 40% off",
+                  background: "#2196F3",
+                  color: "#fff",
+                  value: 1,
+                },
+                {
+                  text: "Nothing",
+                  message: "You get Nothing :(",
+                  background: "#95A5A6",
+                  value: 0,
+                },
+              ],
+
+              //======================================
+              //======================================
+              //=======    Wheel Parameters    =======
+              //======================================
+              //======================================
+              text: {
+                color: "#fff",
+                offset: 8,
+                letterSpacing: 5,
+                orientation: "v",
+                arc: true,
+              },
+
+              slice: {
+                background: "#333333",
+              },
+
+              line: {
+                width: 6,
+                color: "#fefefe",
+              },
+
+              outer: {
+                width: 10,
+                color: "#fefefe",
+              },
+
+              inner: {
+                width: 8,
+                color: "#fefefe",
+              },
+
+              width: 500,
+              duration: 8000,
+            });
+
+            var tick = new Audio("assets/media/tick.mp3");
+            var win = new Audio("assets/media/win.mp3");
+            var lose = new Audio("assets/media/lose.mp3");
+
+            $(document).on("click", ".spin-to-win", function (e) {
+              e.preventDefault();
+              $(".wheel").superWheel(
+                "start",
+                "value",
+                Math.floor(Math.random() * 2)
+              );
+              $(this).prop("disabled", true);
+            });
+
+            $(".wheel").superWheel("onStart", function (results) {
+              $(".spin-to-win").text("Spinning...");
+            });
+
+            $(".wheel").superWheel("onStep", function (results) {
+              if (typeof tick.currentTime !== "undefined") {
+                tick.currentTime = 0;
+                tick.play();
+                setTimeout(function () {
+                  tick.pause();
+                  tick.currentTime = 0;
+                }, 6500);
+              }
+            });
+
+            $(".wheel").superWheel("onComplete", function (results) {
+              if (results.value === 1) {
+                win.play();
+                setTimeout(function () {
+                  win.pause();
+                }, 3000);
+                swal({
+                  type: "success",
+                  title: "Congratulations!",
+                  html: results.message,
+                });
+              } else {
+                lose.play();
+                setTimeout(function () {
+                  lose.pause();
+                }, 5000); // 5 seconds
+                swal("Oops!", results.message, "error");
+              }
+              $(".spin-to-win:disabled")
+                .prop("disabled", false)
+                .text("Spin to win");
+            });
+          });
+          document
+            .querySelector(".backBtn")
+            .addEventListener("click", function () {
+              window.history.back(); // Equivalent to history.go(-1) or history.back()
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
